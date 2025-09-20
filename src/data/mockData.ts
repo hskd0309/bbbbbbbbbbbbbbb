@@ -171,7 +171,7 @@ export const counsellorReferrals = [
     id: 'ref-001',
     studentId: 'HASHED-STU-001',
     realName: 'John Doe',
-    briScore: 45,
+    briScore: 25, // Low BRI = High Risk
     riskFactors: ['High assignment stress', 'Low attendance', 'Social isolation'],
     referredBy: 'Dr. Smith',
     referredDate: '2024-09-05',
@@ -182,7 +182,7 @@ export const counsellorReferrals = [
     id: 'ref-002',
     studentId: 'HASHED-STU-002',
     realName: 'Jane Smith',
-    briScore: 38,
+    briScore: 18, // Very Low BRI = Very High Risk
     riskFactors: ['Other issues', 'Academic pressure', 'Social isolation'],
     referredBy: 'Dr. Johnson',
     referredDate: '2024-09-03',
@@ -194,37 +194,37 @@ export const counsellorReferrals = [
 export const adminHighRiskStudents = [
   {
     id: 'HASHED-ADM-001',
-    briScore: 35,
+    briScore: 25, // Low BRI = High Risk
     class: 'CSE-K',
     lastUpdated: '2024-09-09'
   },
   {
     id: 'HASHED-ADM-002',
-    briScore: 42,
+    briScore: 22, // Low BRI = High Risk
     class: 'CSE-D',
     lastUpdated: '2024-09-08'
   },
   {
     id: 'HASHED-ADM-003',
-    briScore: 38,
+    briScore: 18, // Very Low BRI = Very High Risk
     class: 'CSE-K',
     lastUpdated: '2024-09-07'
   },
   {
     id: 'HASHED-ADM-004',
-    briScore: 41,
+    briScore: 31, // Low BRI = High Risk
     class: 'CSE-D',
     lastUpdated: '2024-09-06'
   },
   {
     id: 'HASHED-ADM-005',
-    briScore: 36,
+    briScore: 16, // Very Low BRI = Very High Risk
     class: 'CSE-K',
     lastUpdated: '2024-09-05'
   },
   {
     id: 'HASHED-ADM-006',
-    briScore: 44,
+    briScore: 34, // Low BRI = High Risk
     class: 'CSE-D',
     lastUpdated: '2024-09-04'
   }
