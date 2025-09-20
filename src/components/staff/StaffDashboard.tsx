@@ -49,15 +49,15 @@ const StaffDashboard: React.FC<StaffDashboardProps> = ({ onPageChange }) => {
   };
 
   const getBriColor = (score: number) => {
-    if (score < 40) return 'text-red-600';
-    if (score <= 70) return 'text-yellow-600';
-    return 'text-green-600';
+    if (score >= 70) return 'text-green-600';  // High BRI = Low Risk = Green
+    if (score >= 40) return 'text-yellow-600'; // Medium BRI = Medium Risk = Yellow
+    return 'text-red-600';                     // Low BRI = High Risk = Red
   };
 
   const getRiskLevelColor = (count: number) => {
-    if (count <= 2) return 'text-green-600';
-    if (count <= 5) return 'text-yellow-600';
-    return 'text-red-600';
+    if (count <= 3) return 'text-green-600';   // Few high-risk students = Good
+    if (count <= 7) return 'text-yellow-600';  // Some high-risk students = Warning
+    return 'text-red-600';                     // Many high-risk students = Alert
   };
 
   return (

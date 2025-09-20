@@ -29,24 +29,24 @@ const StaffStudentMonitor: React.FC = () => {
   });
 
   const getBriColor = (score: number) => {
-    if (score < 40) return 'text-red-600';
-    if (score <= 70) return 'text-yellow-600';
-    return 'text-green-600';
+    if (score >= 70) return 'text-green-600';  // High BRI = Low Risk = Green
+    if (score >= 40) return 'text-yellow-600'; // Medium BRI = Medium Risk = Yellow
+    return 'text-red-600';                     // Low BRI = High Risk = Red
   };
 
   const getRiskBadgeColor = (riskLevel: string) => {
     switch (riskLevel) {
-      case 'high': return 'bg-red-100 text-red-800';
+      case 'high': return 'bg-red-100 text-red-800';   // High Risk = Red
       case 'medium': return 'bg-yellow-100 text-yellow-800';
-      default: return 'bg-green-100 text-green-800';
+      default: return 'bg-green-100 text-green-800';   // Low Risk = Green
     }
   };
 
   const getGradientBackground = (riskLevel: string) => {
     switch (riskLevel) {
-      case 'high': return 'bg-gradient-to-r from-red-50 to-pink-50 border-red-200';
+      case 'high': return 'bg-gradient-to-r from-red-50 to-pink-50 border-red-200';     // High Risk = Red
       case 'medium': return 'bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-200';
-      default: return 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200';
+      default: return 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200';  // Low Risk = Green
     }
   };
 

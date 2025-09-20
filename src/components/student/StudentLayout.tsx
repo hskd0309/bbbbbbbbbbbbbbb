@@ -31,6 +31,8 @@ const StudentLayout: React.FC = () => {
         return <StudentProfile />;
       case 'privacy':
         return <PrivacyConsent />;
+      case 'privacy':
+        return <PrivacyConsent />;
       default:
         return <StudentDashboard />;
     }

@@ -24,19 +24,19 @@ const ClassAnalytics: React.FC<ClassAnalyticsProps> = ({ className }) => {
     switch (riskLevel) {
       case 'high': return 'bg-red-100 border-red-300 text-red-800';
       case 'medium': return 'bg-yellow-100 border-yellow-300 text-yellow-800';
-      default: return 'bg-green-100 border-green-300 text-green-800';
+      default: return 'bg-green-100 border-green-300 text-green-800'; // Low Risk = Green
     }
   };
 
   const getBriColor = (score: number) => {
-    if (score < 40) return 'text-red-600';
-    if (score <= 70) return 'text-yellow-600';
-    return 'text-green-600';
+    if (score >= 70) return 'text-green-600';  // High BRI = Low Risk = Green
+    if (score >= 40) return 'text-yellow-600'; // Medium BRI = Medium Risk = Yellow
+    return 'text-red-600';                     // Low BRI = High Risk = Red
   };
 
   const recentComplaints = complaints.filter(complaint => complaint.class === className);
 
-  const StudentModal: React.FC<{ student: any }> = ({ student }) => (
+      case 'high': return 'bg-red-100 border-red-300 text-red-800';   // High Risk = Red
     <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
       <DialogHeader>
         <DialogTitle>Student Analysis - {student.id}</DialogTitle>

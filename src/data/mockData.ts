@@ -1,7 +1,7 @@
 // Mock data for dashboard charts and components
 
 export const studentData = {
-  briScore: 72,
+  briScore: 28, // Lower BRI = Higher Risk (this student is high risk)
   attendance: 85,
   avgMarks: 78,
   assignmentsOnTime: 92,
@@ -9,12 +9,12 @@ export const studentData = {
   dataSharing: true, // Privacy consent for sharing data with advisors
   
   briHistory: [
-    { month: 'Jan', score: 80 },
-    { month: 'Feb', score: 75 },
-    { month: 'Mar', score: 78 },
-    { month: 'Apr', score: 72 },
-    { month: 'May', score: 76 },
-    { month: 'Jun', score: 72 }
+    { month: 'Jan', score: 35 },
+    { month: 'Feb', score: 32 },
+    { month: 'Mar', score: 30 },
+    { month: 'Apr', score: 28 },
+    { month: 'May', score: 25 },
+    { month: 'Jun', score: 28 }
   ],
   
   attendanceData: [
@@ -60,63 +60,85 @@ export const studentData = {
 
 export const classData = {
   'CSE-K': {
-    avgBri: 68,
-    highRiskCount: 5,
+    avgBri: 32, // Lower BRI = Higher Risk
+    highRiskCount: 8,
     avgAttendance: 82,
     totalStudents: 40,
     complaintsCount: 3,
     
     briTrend: [
-      { week: 'Week 1', score: 72 },
-      { week: 'Week 2', score: 70 },
-      { week: 'Week 3', score: 68 },
-      { week: 'Week 4', score: 65 },
-      { week: 'Week 5', score: 68 }
+      { week: 'Week 1', score: 38 },
+      { week: 'Week 2', score: 35 },
+      { week: 'Week 3', score: 32 },
+      { week: 'Week 4', score: 28 },
+      { week: 'Week 5', score: 32 }
     ],
     
     riskDistribution: [
-      { risk: 'Low', count: 25, fill: '#22c55e' },
-      { risk: 'Medium', count: 10, fill: '#f59e0b' },
-      { risk: 'High', count: 5, fill: '#ef4444' }
+      { risk: 'Low', count: 20, fill: '#22c55e' },
+      { risk: 'Medium', count: 12, fill: '#f59e0b' },
+      { risk: 'High', count: 8, fill: '#ef4444' }
     ],
     
-    students: Array.from({ length: 40 }, (_, i) => ({
-      id: `anon-${i + 1}`,
-      briScore: Math.floor(Math.random() * 60) + 25, // 25-85 range
-      trend: Array.from({ length: 10 }, () => Math.floor(Math.random() * 30) + 50),
-      riskLevel: ['low', 'medium', 'high'][Math.floor(Math.random() * 3)],
-      dataSharing: i % 7 !== 0 // Some students (every 7th) deny data sharing
-    }))
+    students: Array.from({ length: 40 }, (_, i) => {
+      // Generate BRI score first
+      const briScore = Math.floor(Math.random() * 80) + 10; // 10-90 range
+      
+      // Determine risk level based on BRI score (inverted logic)
+      let riskLevel;
+      if (briScore >= 70) riskLevel = 'low';    // High BRI = Low Risk
+      else if (briScore >= 40) riskLevel = 'medium'; // Medium BRI = Medium Risk  
+      else riskLevel = 'high';                  // Low BRI = High Risk
+      
+      return {
+        id: `anon-${i + 1}`,
+        briScore,
+        trend: Array.from({ length: 10 }, () => Math.floor(Math.random() * 80) + 10),
+        riskLevel,
+        dataSharing: i % 7 !== 0 // Some students (every 7th) deny data sharing
+      };
+    })
   },
   
   'CSE-D': {
-    avgBri: 75,
-    highRiskCount: 3,
+    avgBri: 25, // Lower BRI = Higher Risk
+    highRiskCount: 5,
     avgAttendance: 88,
     totalStudents: 38,
     complaintsCount: 1,
     
     briTrend: [
-      { week: 'Week 1', score: 78 },
-      { week: 'Week 2', score: 76 },
-      { week: 'Week 3', score: 75 },
-      { week: 'Week 4', score: 73 },
-      { week: 'Week 5', score: 75 }
+      { week: 'Week 1', score: 32 },
+      { week: 'Week 2', score: 28 },
+      { week: 'Week 3', score: 25 },
+      { week: 'Week 4', score: 22 },
+      { week: 'Week 5', score: 25 }
     ],
     
     riskDistribution: [
-      { risk: 'Low', count: 30, fill: '#22c55e' },
-      { risk: 'Medium', count: 5, fill: '#f59e0b' },
-      { risk: 'High', count: 3, fill: '#ef4444' }
+      { risk: 'Low', count: 25, fill: '#22c55e' },
+      { risk: 'Medium', count: 8, fill: '#f59e0b' },
+      { risk: 'High', count: 5, fill: '#ef4444' }
     ],
     
-    students: Array.from({ length: 38 }, (_, i) => ({
-      id: `anon-${i + 41}`,
-      briScore: Math.floor(Math.random() * 60) + 30, // 30-90 range
-      trend: Array.from({ length: 10 }, () => Math.floor(Math.random() * 30) + 60),
-      riskLevel: ['low', 'medium', 'high'][Math.floor(Math.random() * 3)],
-      dataSharing: i % 5 !== 0 // Some students (every 5th) deny data sharing
-    }))
+    students: Array.from({ length: 38 }, (_, i) => {
+      // Generate BRI score first
+      const briScore = Math.floor(Math.random() * 80) + 10; // 10-90 range
+      
+      // Determine risk level based on BRI score (inverted logic)
+      let riskLevel;
+      if (briScore >= 70) riskLevel = 'low';    // High BRI = Low Risk
+      else if (briScore >= 40) riskLevel = 'medium'; // Medium BRI = Medium Risk
+      else riskLevel = 'high';                  // Low BRI = High Risk
+      
+      return {
+        id: `anon-${i + 41}`,
+        briScore,
+        trend: Array.from({ length: 10 }, () => Math.floor(Math.random() * 80) + 10),
+        riskLevel,
+        dataSharing: i % 5 !== 0 // Some students (every 5th) deny data sharing
+      };
+    })
   }
 };
 

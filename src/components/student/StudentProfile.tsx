@@ -30,9 +30,9 @@ const StudentProfile: React.FC = () => {
   ];
 
   const getFactorColor = (score: number) => {
-    if (score < 40) return 'bg-red-500';
-    if (score <= 70) return 'bg-yellow-500';
-    return 'bg-green-500';
+    if (score >= 70) return 'bg-green-500';   // High score = Good = Green
+    if (score >= 40) return 'bg-yellow-500';  // Medium score = Warning = Yellow
+    return 'bg-red-500';                      // Low score = Bad = Red
   };
 
   const getImpactColor = (impact: string, type: string) => {
